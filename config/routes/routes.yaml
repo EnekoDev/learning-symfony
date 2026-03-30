@@ -1,0 +1,4 @@
+# config/routes.yaml
+welcome:
+  path: /welcome
+  controller: App\Controller\WelcomeController::welcome
