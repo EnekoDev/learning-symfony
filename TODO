@@ -1,271 +1,280 @@
-# Symfony Learning Tasks with Testing
+# Symfony Learning Tasks with Testing Alignment
 
 ## Beginner Level
 
-### 1. **Install Symfony**
-**Task**:
-- Install Symfony on your local machine and create a basic project.
-- Run `symfony new my_project_name` and access your project in the browser. Set up a virtual host or use the built-in server (`php bin/console server:start`).
+### 1. Install Symfony (DONE)
+**Task**  
+- Install Symfony and create a new project  
+- Run the local server and ensure the app is accessible  
 
-**Test**:
-- **Test Type**: Functional Test
-- **Test**: Verify that the homepage route (`/`) returns a `200 OK` response.
-
----
-
-### 2. **Understand Symfony Structure**
-**Task**:
-- Explore the default directory structure of a Symfony project.
-- Write a short explanation of what each directory/file does (e.g., `src`, `config`, `public`, `var`, `vendor`).
-
-**Test**:
-- **Test Type**: Functional Test
-- **Test**: Check if the `homeAction()` and `aboutAction()` in your controller are reachable via the defined routes.
+**Test**  
+- **Type**: Functional  
+- Request `/` returns **200 OK**  
+- Response contains default Symfony welcome page content  
 
 ---
 
-### 3. **Routing Basics**
-**Task**:
-- Define simple routes in `config/routes.yaml` and link them to controller actions.
-- Create dynamic routes with parameters (e.g., `/hello/{name}`).
+### 2. Understand Symfony Structure  (DONE)
+**Task**  
+- Explore directories (`src`, `config`, `public`, `var`, `vendor`)  
+- Document their purpose  
 
-**Test**:
-- **Test Type**: Functional Test
-- **Test**: Write a test that checks if a dynamic route like `/hello/{name}` correctly substitutes the `name` parameter and returns the expected response.
-
----
-
-### 4. **Controllers**
-**Task**:
-- Create a controller with multiple actions (e.g., `homeAction()` and `aboutAction()`).
-- Return simple responses (e.g., a welcome message or a view).
-
-**Test**:
-- **Test Type**: Functional Test
-- **Test**: Verify that the `homeAction()` and `aboutAction()` correctly render views or return the expected content (e.g., "Welcome").
+**Test**  
+- **Type**: Manual / Documentation  
+- Verify documentation exists and correctly explains each folder  
 
 ---
 
-### 5. **Twig Templating**
-**Task**:
-- Use the Twig templating engine to render dynamic templates.
-- Create a template `welcome.html.twig` that displays a "Hello, [name]" message passed from the controller.
+### 3. Routing Basics  (DONE)
+**Task**  
+- Define static and dynamic routes (`/hello/{name}`)  
 
-**Test**:
-- **Test Type**: Functional Test
-- **Test**: Check if the `welcome.html.twig` template renders the correct output when the controller passes data (e.g., "Hello, John").
-
----
-
-### 6. **Doctrine ORM Basics**
-**Task**:
-- Install and configure Doctrine.
-- Create an entity (e.g., `Product`) and map it to the database.
-- Persist the entity to the database using Doctrine's `EntityManager`.
-
-**Test**:
-- **Test Type**: Integration Test
-- **Test**: Write a test to ensure a new `Product` entity is saved to the database and retrieved correctly.
+**Test**  
+- **Type**: Functional  
+- `/hello/John` returns **200 OK**  
+- Response contains `"John"`  
+- Invalid route returns **404**  
 
 ---
 
-### 7. **Create a Simple CRUD Application**
-**Task**:
-- Build a CRUD application to manage `Articles`.
-- Implement routes for creating, reading, updating, and deleting articles.
+### 4. Controllers  
+**Task**  
+- Create controller with multiple actions  
 
-**Test**:
-- **Test Type**: Functional Test
-- **Test**: Verify that creating, editing, and deleting an `Article` works as expected through the web interface.
+**Test**  
+- **Type**: Functional  
+- `/` returns expected content (e.g., "Welcome")  
+- `/about` returns expected content  
+- Both routes return **200**  
+
+---
+
+### 5. Twig Templating  
+**Task**  
+- Render Twig templates with variables  
+
+**Test**  
+- **Type**: Functional  
+- Rendered HTML contains `"Hello John"`  
+- Controller passes data correctly to Twig  
+
+---
+
+### 6. Doctrine ORM Basics  
+**Task**  
+- Create entity and persist data  
+
+**Test**  
+- **Type**: Integration  
+- Entity is persisted and retrieved correctly  
+- Retrieved data matches inserted data  
+
+---
+
+### 7. CRUD Application  
+**Task**  
+- Build CRUD for `Article`  
+
+**Test**  
+- **Type**: Functional  
+- Create → entity exists in DB  
+- Read → page shows saved data  
+- Update → changes persist  
+- Delete → entity removed  
 
 ---
 
 ## Intermediate Level
 
-### 8. **Symfony Forms**
-**Task**:
-- Create and process forms using Symfony's Form component.
-- Implement form validation (e.g., for a `Contact` form).
+### 8. Symfony Forms  
+**Task**  
+- Build and validate forms  
 
-**Test**:
-- **Test Type**: Functional Test
-- **Test**: Simulate submitting a contact form and check if the form is correctly validated (e.g., email format validation).
-
----
-
-### 9. **Symfony Validation**
-**Task**:
-- Apply validation constraints to an entity (e.g., `Product`).
-- Add constraints like `@Assert\NotBlank`, `@Assert\GreaterThan`, etc.
-
-**Test**:
-- **Test Type**: Unit Test
-- **Test**: Write a test to check if the `Product` entity's validation constraints work correctly (e.g., the price is greater than 0).
+**Test**  
+- **Type**: Functional  
+- Valid submission succeeds  
+- Invalid submission shows errors  
 
 ---
 
-### 10. **Authentication and Authorization**
-**Task**:
-- Implement user authentication using Symfony Security.
-- Protect routes and require specific roles for access.
+### 9. Symfony Validation  
+**Task**  
+- Add validation constraints  
 
-**Test**:
-- **Test Type**: Functional Test
-- **Test**: Write tests for login functionality and verify that authenticated users can access protected routes. Ensure that unauthorized users are redirected.
-
----
-
-### 11. **Services and Dependency Injection**
-**Task**:
-- Create a custom service (e.g., `DateTimeService`) and inject it into a controller.
-- Use Symfony's Dependency Injection container to manage services.
-
-**Test**:
-- **Test Type**: Unit Test
-- **Test**: Write tests for the `DateTimeService` to ensure that it provides the correct date and time.
+**Test**  
+- **Type**: Unit  
+- Invalid entity returns violations  
+- Valid entity passes validation  
 
 ---
 
-### 12. **Twig Advanced Features**
-**Task**:
-- Create custom Twig filters, functions, or macros.
-- Use inheritance and includes in templates to improve reusability.
+### 10. Authentication & Authorization  
+**Task**  
+- Implement login and role protection  
 
-**Test**:
-- **Test Type**: Unit Test
-- **Test**: Write a unit test to verify that your custom Twig macro or filter works correctly (e.g., a macro for rendering alerts).
-
----
-
-### 13. **Symfony Console Commands**
-**Task**:
-- Create a custom Symfony console command.
-- Use the console to execute background tasks or display information.
-
-**Test**:
-- **Test Type**: Integration Test
-- **Test**: Write a test for a custom console command (e.g., listing all users) to ensure it works as expected when run from the command line.
+**Test**  
+- **Type**: Functional  
+- Valid login works  
+- Invalid login fails  
+- Protected route:
+  - Authenticated user → access granted  
+  - Guest → redirected  
 
 ---
 
-### 14. **Testing**
-**Task**:
-- Write functional and unit tests for your controllers, services, and entities.
+### 11. Services & Dependency Injection  
+**Task**  
+- Create and inject a service  
 
-**Test**:
-- **Test Type**: Functional Test
-- **Test**: Test controller actions (e.g., `homeAction()`), ensuring they return the correct status code and output.
-- **Test Type**: Unit Test
-- **Test**: Write tests for service methods and entity logic (e.g., checking if a product is valid based on the validation rules).
+**Test**  
+- **Type**: Unit  
+- Service returns expected values  
+- Service works independently  
+
+---
+
+### 12. Twig Advanced Features  
+**Task**  
+- Create custom filters/macros  
+
+**Test**  
+- **Type**: Integration  
+- Custom Twig logic produces expected output  
+
+---
+
+### 13. Console Commands  
+**Task**  
+- Create CLI command  
+
+**Test**  
+- **Type**: Integration  
+- Command runs successfully  
+- Output is correct  
+- Exit code is `0`  
+
+---
+
+### 14. Testing Practice  
+**Task**  
+- Write unit and functional tests  
+
+**Test**  
+- **Type**: Meta  
+- Controllers have functional tests  
+- Services have unit tests  
+- Basic coverage threshold met  
 
 ---
 
 ## Advanced Level
 
-### 15. **Event Dispatcher**
-**Task**:
-- Create custom events and event listeners.
-- Trigger events in your application and listen for them.
+### 15. Event Dispatcher  
+**Task**  
+- Create events and listeners  
 
-**Test**:
-- **Test Type**: Unit Test
-- **Test**: Write a test to ensure that a custom event is dispatched and that the corresponding event listener performs the expected action (e.g., sending an email).
-
----
-
-### 16. **API Development with Symfony**
-**Task**:
-- Build a simple REST API using Symfony.
-- Implement endpoints to fetch data in JSON format (e.g., `/api/products`).
-
-**Test**:
-- **Test Type**: Functional Test
-- **Test**: Write a test to verify that the API endpoint returns a `200 OK` status and the correct JSON data.
+**Test**  
+- **Type**: Integration  
+- Event triggers listener  
+- Expected side effect occurs  
 
 ---
 
-### 17. **Symfony and Caching**
-**Task**:
-- Implement caching in your Symfony application.
-- Cache the result of slow database queries (e.g., product listing).
+### 16. API Development  
+**Task**  
+- Build REST API  
 
-**Test**:
-- **Test Type**: Integration Test
-- **Test**: Write a test to ensure that caching is working correctly by checking that a cached response doesn't query the database again.
-
----
-
-### 18. **Symfony Messenger and Queues**
-**Task**:
-- Use Symfony Messenger for background jobs and message queues.
-- Set up a queue (e.g., RabbitMQ) for asynchronous processing.
-
-**Test**:
-- **Test Type**: Integration Test
-- **Test**: Write a test to verify that messages are dispatched to the queue and processed by the message handler correctly.
+**Test**  
+- **Type**: Functional  
+- Endpoint returns **200 OK**  
+- Response is valid JSON  
+- Structure matches expected schema  
 
 ---
 
-### 19. **Advanced Security**
-**Task**:
-- Implement OAuth2 authentication in your application.
-- Use an external authentication provider (e.g., Google, Facebook).
+### 17. Caching  
+**Task**  
+- Implement caching  
 
-**Test**:
-- **Test Type**: Functional Test
-- **Test**: Test the OAuth2 authentication flow and verify that users can authenticate via external providers.
-
----
-
-### 20. **Microservices Architecture**
-**Task**:
-- Break your application into microservices.
-- Set up communication between services (e.g., via REST APIs).
-
-**Test**:
-- **Test Type**: Integration Test
-- **Test**: Write tests to ensure that communication between microservices works correctly (e.g., a product service retrieving data from a user service).
+**Test**  
+- **Type**: Integration  
+- First request executes logic  
+- Second request uses cache  
 
 ---
 
-### 21. **Symfony with Docker**
-**Task**:
-- Dockerize your Symfony application.
-- Set up a `docker-compose.yml` to include services like MySQL and Redis.
+### 18. Messenger & Queues  
+**Task**  
+- Implement async processing  
 
-**Test**:
-- **Test Type**: Functional Test
-- **Test**: Test if your Symfony application runs correctly within the Docker container, including database interactions and file uploads.
-
----
-
-### 22. **Symfony Performance Optimization**
-**Task**:
-- Optimize database queries and page loads.
-- Use caching and profiling to improve performance.
-
-**Test**:
-- **Test Type**: Performance Test
-- **Test**: Measure the execution time of database queries before and after optimization, ensuring that performance has improved.
+**Test**  
+- **Type**: Integration  
+- Message is dispatched  
+- Handler processes message correctly  
 
 ---
 
-### 23. **Symfony Best Practices and Patterns**
-**Task**:
-- Refactor code to use design patterns (e.g., Factory, Singleton).
-- Apply Symfony best practices (e.g., Dependency Injection, Event-Driven Architecture).
+### 19. Advanced Security (OAuth)  
+**Task**  
+- Add OAuth login  
 
-**Test**:
-- **Test Type**: Unit Test
-- **Test**: Write tests for code that follows design patterns to ensure that behavior is consistent and correct.
+**Test**  
+- **Type**: Functional  
+- OAuth flow redirects correctly  
+- User is authenticated after callback  
 
 ---
 
-### 24. **Deployment & CI/CD**
-**Task**:
-- Set up Continuous Integration (CI) and Continuous Deployment (CD) pipelines.
-- Automate database migrations and deployment steps.
+### 20. Microservices  
+**Task**  
+- Split services and communicate via API  
 
-**Test**:
-- **Test Type**: End-to-End Test
-- **Test**: Write a test to ensure
+**Test**  
+- **Type**: Integration  
+- Service-to-service communication works  
+- Responses handled correctly  
+
+---
+
+### 21. Docker  
+**Task**  
+- Dockerize application  
+
+**Test**  
+- **Type**: Integration  
+- Containers start successfully  
+- App is accessible  
+- Database connection works  
+
+---
+
+### 22. Performance Optimization  
+**Task**  
+- Improve performance  
+
+**Test**  
+- **Type**: Performance  
+- Execution time improves after optimization  
+
+---
+
+### 23. Best Practices & Patterns  
+**Task**  
+- Refactor using design patterns  
+
+**Test**  
+- **Type**: Unit  
+- Behavior remains correct after refactor  
+- Code is modular and testable  
+
+---
+
+### 24. Deployment & CI/CD  
+**Task**  
+- Set up CI/CD pipeline  
+
+**Test**  
+- **Type**: End-to-End  
+- Pipeline runs tests automatically  
+- Deployment succeeds  
+- Application is reachable after deployment  
