@@ -12,17 +12,17 @@ class HelloControllerTest extends PantherTestCase {
         $this->client = static::createClient();
     }
 
-    public function testRouteResponse() {
-        $this->client->request('GET', '/hello/John');
+    public function testRouteResponse():void {
+        $this->client->request('GET', '/hello/'."John");
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
     }
 
-    public function testRouteContent() {
-        $this->client->request('GET', 'hello/John');
+    public function testRouteContent():void {
+        $this->client->request('GET', 'hello/'."John");
         $this->assertSelectorTextContains("h1", "John");
     }
 
-    public function testInvalidRoute() {
+    public function testInvalidRoute():void {
         $this->client->request('GET', '/fakeEndpoint');
         $this->assertEquals(404, $this->client->getResponse()->getStatusCode());
     }

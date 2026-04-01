@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class HelloController {
     #[Route('/hello/{name}', name: 'hello_page')]
-    public function hello(string $name):Response {
+    public function index(string $name):Response {
         return new Response("<html><body><h1>Hello " . $name . "!</h1></body></html>");
     }
 }

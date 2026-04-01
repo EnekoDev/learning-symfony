@@ -37,14 +37,14 @@
 
 ---
 
-### 4. Controllers  
+### 4. Controllers  (DONE)
 **Task**  
 - Create controller with multiple actions  
 
 **Test**  
 - **Type**: Functional  
 - `/` returns expected content (e.g., "Welcome")  
-- `/about` returns expected content  
+- `/about` returns expected content   
 - Both routes return **200**  
 
 ---
