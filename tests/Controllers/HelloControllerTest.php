@@ -19,7 +19,7 @@ class HelloControllerTest extends PantherTestCase {
 
     public function testRouteContent():void {
         $this->client->request('GET', 'hello/'."John");
-        $this->assertSelectorTextContains("h1", "John");
+        $this->assertSelectorTextContains("h1", "Hello John");
     }
 
     public function testInvalidRoute():void {
